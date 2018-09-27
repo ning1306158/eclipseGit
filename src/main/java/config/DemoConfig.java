@@ -8,6 +8,7 @@ import com.jfinal.config.Plugins;
 import com.jfinal.config.Routes;
 import com.jfinal.plugin.activerecord.ActiveRecordPlugin;
 import com.jfinal.plugin.druid.DruidPlugin;
+import com.jfinal.render.ViewType;
 import com.jfinal.template.Engine;
 import com.jfinal.template.source.ClassPathSourceFactory;
 
@@ -20,6 +21,7 @@ public class DemoConfig extends JFinalConfig{
 	@Override
 	public void configConstant(Constants me) {
 		me.setDevMode(true);
+		me.setViewType(ViewType.JFINAL_TEMPLATE);
 		
 	}
 
@@ -28,12 +30,12 @@ public class DemoConfig extends JFinalConfig{
 		// TODO Auto-generated method stub
 		me.add("/hello", HeeloController.class);
 		me.add("/login", LoginController.class);
-		System.out.println("sad");
 	}
 
 	@Override
 	public void configEngine(Engine me) {
-		// TODO Auto-generated method stub
+		me.setDevMode(true);
+//		me.addSharedFunction("html/login.html");
 		
 	}
 

@@ -17,11 +17,16 @@ public class LoginController extends Controller{
 		User u=getModel(User.class);
 		String sql=Db.getSql("findGirl");
 		List<Record> li=Db.find(sql,u.getStr("name"),u.getStr("pass"));
-		System.out.println(li);
-		for (Record record : li) {
+		if(li.size()>0)
+		{
+			renderText("hello world");
 			
 		}
-		renderText("hello world");
+		else
+		{
+			setAttr("mess", "您的账号或密码有误！！！");
+			render("/html/login.html");
+		}
 	}
 
 }
